@@ -1,27 +1,41 @@
 # DJS05 Project Brief: Building a Redux-Inspired Store for a Tally App
 
-***How to Run the Code***
-Clone the repository:
-Copy code
-git clone https://github.com/your-username/your-repo-name.git
-Navigate to the project directory:
-Copy code
-cd your-repo-name
-Run the code:
-Copy code
-node index.js
+### Redux Tally Project
 
-Overview of the Approach
-This project implements a simple Redux-inspired store for managing the state of a tally counter. The store is built using functional programming principles and provides the following methods:
+**Introduction**
 
-getState: Returns the current state of the tally counter.
-dispatch: Takes an action (e.g., ADD, SUBTRACT, RESET) and updates the state accordingly.
-subscribe: Accepts a function that gets called whenever the state changes. This function logs the new state to the console.
-The createStore function is responsible for creating the store and managing the state. It takes a reducer function as an argument, which is used to handle state updates based on dispatched actions.
+This project is a simple implementation of a Redux store, reducer, actions, and subscriptions. It demonstrates a basic tally system where the count can be incremented, decremented, and reset.
 
-The tallyReducer function is a simple reducer that handles 'ADD', 'SUBTRACT', and 'RESET' actions. It maintains the current state of the tally counter and updates it based on the dispatched action.
+**Files** 
 
-The store is created by calling createStore with the tallyReducer. The subscribe method is used to log the new state to the console whenever the state changes.
+**store.js** 
 
-This approach allows for a simple and flexible way to manage state without the complexity of UI rendering. All state changes are observable through console logs, making it easy to understand the flow of data within the application.
- 
+Contains the createStore function, which creates a Redux store with a given reducer and initial state.
+
+**reducer.js**
+
+Contains the tallyReducer function, which handles actions and updates the state accordingly.
+
+**actions.js**
+
+Contains action creators for incrementing, decrementing, and resetting the count.
+
+**subscriptions.js**
+
+Contains the logState function, which sets up a subscription to log the new state whenever an action is dispatched.
+
+**script.js**
+The main script where the store is created, subscriptions are set up, and actions are dispatched.
+
+## Usage
+To run the project, simply execute node script.js in the terminal. This will create the store, set up the subscription, and dispatch actions to increment, decrement, and reset the count.
+
+## Output
+
+The output will be the new state logged to the console after each action is dispatched:
+
+New state: { count: 1 }
+New state: { count: 2 }
+New state: { count: 1 }
+New state: { count: 0 }
+
