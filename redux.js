@@ -31,3 +31,19 @@ const createStore = (reducer) => {
         return state;
     }
   };
+  
+const store = createStore(tallyReducer);
+
+store.subscribe(() => {
+  console.log('New state:', store.getState());
+});
+
+// Scenario 2: Incrementing the Counter
+store.dispatch({ type: 'ADD' });  // New state: 1
+store.dispatch({ type: 'ADD' });  // New state: 2
+
+// Scenario 3: Decrementing the Counter
+store.dispatch({ type: 'SUBTRACT' });  // New state: 1
+
+// Scenario 4: Resetting the Counter
+store.dispatch({ type: 'RESET' });  // New state: 0
