@@ -38,9 +38,6 @@ const createStore = (reducer) => {
     console.log('New state:', store.getState());
   });
   
-  // Scenario 1: Initial State Verification
-  console.log('Initial state:', store.getState());
-  
   // Scenario 2: Incrementing the Counter
   store.dispatch({ type: 'ADD' });
   store.dispatch({ type: 'ADD' });
