@@ -1,5 +1,5 @@
 const createStore = (reducer) => {
-    let state;
+    let state = reducer(undefined, { type: '__INIT__' });
     let listeners = [];
   
     const getState = () => state;
@@ -12,7 +12,7 @@ const createStore = (reducer) => {
     const subscribe = (listener) => {
       listeners.push(listener);
       return () => {
-        listeners = listeners.filter((l) => l!== listener);
+        listeners = listeners.filter((l) => l !== listener);
       };
     };
   
@@ -31,19 +31,3 @@ const createStore = (reducer) => {
         return state;
     }
   };
-  
-  const store = createStore(tallyReducer);
-  
-  store.subscribe(() => {
-    console.log('New state:', store.getState());
-  });
-  
-  // Scenario 2: Incrementing the Counter
-  store.dispatch({ type: 'ADD' });
-  store.dispatch({ type: 'ADD' });
-  
-  // Scenario 3: Decrementing the Counter
-  store.dispatch({ type: 'SUBTRACT' });
-  
-  // Scenario 4: Resetting the Counter
-  store.dispatch({ type: 'RESET' });
